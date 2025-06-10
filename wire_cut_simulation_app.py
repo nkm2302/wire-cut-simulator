@@ -18,7 +18,7 @@ cut_offset_top = st.number_input("Cut offset from top of stack (inches)", min_va
 wire_angle_deg = st.slider("Wire angle (degrees, positive tilts cutting line downward to right)", min_value=-5.0, max_value=5.0, value=0.0, step=0.1)
 
 tol_min = st.number_input("Tolerance minimum final height (inches)", min_value=0.0, max_value=plate_height, value=5.4, step=0.01)
-tol_max = st.number_input("Tolerance maximum final height (inches)", min_value=0.0, max_value=plate_height, value=5.6, step=0.01)
+tol_max = st.number_input("Tolerance maximum final height (inches)", min_value=0.0, max_value=plate_height, value=5.5, step=0.01)
 
 # --- Calculate final cut heights ---
 angle_rad = np.deg2rad(wire_angle_deg)
