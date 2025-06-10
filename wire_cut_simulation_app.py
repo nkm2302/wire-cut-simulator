@@ -130,10 +130,14 @@ def generate_animation():
     anim = animation.FuncAnimation(fig, animate, init_func=init, frames=101, interval=30, blit=True)
 
     buf = io.BytesIO()
-    anim.save(buf, format='gif', writer='pillow', fps=30)
+   from matplotlib.animation import PillowWriter
+
+    writer = PillowWriter(fps=30)
+    anim.save(buf, writer=writer)
     buf.seek(0)
     plt.close(fig)
     return buf
+
 
 st.subheader("Wire Cut Process Animation")
 gif_bytes = generate_animation()
