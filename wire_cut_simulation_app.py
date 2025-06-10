@@ -73,6 +73,7 @@ def generate_animation():
         else:
             y_base = frame / 100 * plate_height
 
+        # Apply angle
         y_wire = y_base + np.tan(cut_angle_rad) * (wire_x - 0)
         wire_line.set_data(wire_x, y_wire)
 
@@ -92,7 +93,12 @@ def generate_animation():
 
     buf = io.BytesIO()
     writer = PillowWriter(fps=30)
-    anim.save(buf, writer=writer, savefig_kwargs={"facecolor": "white"})
+    anim.save(buf, writer=writer)
     buf.seek(0)
     plt.close(fig)
     return buf
+
+st.subheader("Wire Cutting Animation")
+if st.button("Run Animation"):
+    gif_bytes = generate_animation()
+    st.image(gif_bytes, format="gif")
